@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/body-parser": "^1.16.8",
+    "@types/express": "^4.0.39",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "@types/request-promise": "^4.1.39",
+    "jasmine": "^2.8.0",
+    "request-promise": "^4.2.2"
+  }
+}
