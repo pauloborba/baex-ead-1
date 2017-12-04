@@ -4,7 +4,7 @@ export class Student {
   email: string;
   password: string; //plain text?
   inDay: Map<string, boolean>;
-  courses: Array<string>;
+  classes: Array<string>;
 
   constructor(name: string, cpf: string, email: string, password: string) {
     this.name = name;
@@ -12,6 +12,6 @@ export class Student {
     this.email = email;
     this.password = password;
     this.inDay = new Map<string, boolean>();
-    this.courses = new Array<string>();
+    this.classes = new Array<string>();
   }
 }

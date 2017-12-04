@@ -1,0 +1,21 @@
+<div>
+  <label>
+    name:
+    <input type="text" id="name" [(ngModel)]="student.name">
+  </label>
+  <label>
+    cpf:
+    <input type="text" id="cpf" [(ngModel)]="student.cpf">
+  </label>
+  <label>
+    email:
+    <input type="text" id="email" [(ngModel)]="student.email">
+  </label>
+  <label>
+    password:
+    <input type="password" id="password" [(ngModel)]="student.password">
+  </label>
+  <input type="button" value="sign in" id="signIn" (click)="onSignIn()">
+  <input type="button" value="sign up" id="signUp" (click)="onSignUp()">
+  <p>{{message}}</p>
+</div>
