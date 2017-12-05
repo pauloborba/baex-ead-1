@@ -24,4 +24,17 @@ describe("Course Repository", () => {
     expect(course.modules.length).toBe(0);
   })
 
+  it("does not register courses with equal names", () => {
+    var course: Course = new Course();
+    course.name = "Test Course";
+    course.price = 100;
+    repository.insert(course);
+
+    course.name = "Test Course";
+    course.price = 300;
+    repository.insert(course);
+
+    expect(repository.getAll().length).toBe(1);
+  })
+
 })
