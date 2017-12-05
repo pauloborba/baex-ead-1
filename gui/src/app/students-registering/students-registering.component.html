@@ -1,0 +1,6 @@
+<div class="register-box" ng-mousemove="onMove()">
+    <input [(ngModel)] = "student.email" type="email" name="emailBox">
+    <input [(ngModel)] = "student.password" type="password" name="passwordBox">
+    <button type="button" name="button" (click)= "createStudent(student)">Cadastrar</button>
+    <label name="status">{{status}}</label>
+</div>

@@ -6,8 +6,8 @@ let expect = chai.expect;
 defineSupportCode(function({Given, When, Then}){
 
     Given(/^There’s no student with e-mail “(.*)” registered$/, async (email) => {
-        await browser.get("http://localhost:4200/alunos");
-        var studentesEmails : ElementArrayFinder = element.all(by.name('studentsEmailsList'));
+        await browser.get("http://localhost:4200/lista-de-alunos");
+        var studentsEmails : ElementArrayFinder = element.all(by.name('studentsEmailsList'));
         await studentsEmails;
         var sameEmails = studentsEmails.filter(elem => elem.getText().then(text => text === email));
         await sameEmails;
