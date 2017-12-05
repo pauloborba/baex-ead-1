@@ -26,8 +26,11 @@ export class OwnedCourseComponent implements OnInit {
   redirectTo(modulee: Module) {
     let released = new Date(modulee.releaseDate);
     let today = new Date();
-    if (today.getTime() >= released.getTime()) {
+    let inDay = this.userService.getStudent().inDay[this.course.name];
+    if (inDay === true && today.getTime() >= released.getTime()) {
       this.router.navigate(['myModule', JSON.stringify(this.course), JSON.stringify(modulee)]);
+    } else if (!inDay) {
+      this.message = 'not in day with your payments';
     } else {
       this.message = 'not avaliable yet';
     }

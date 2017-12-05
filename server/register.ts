@@ -89,7 +89,7 @@ export class Register {
         return null;
     }
     
-    confirmPaymentByName(student: string, course: string) {
+    confirmPaymentByName(student: string, course: string, confirmation?: string) {
         const existentCourses = this.courses.filter(el => el.name === course);
         if(existentCourses.length === 1) {
             for (let i in this.students) {

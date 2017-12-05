@@ -62,6 +62,11 @@ export class UserService {
     });
   }
 
+  getStudent(): Student {
+    
+    return this.student;
+  }
+
   clear(): void {
     this.student = null;
   }

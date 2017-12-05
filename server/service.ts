@@ -68,7 +68,7 @@ app.put('/enroll', (req: express.Request, res: express.Response) => {
 app.put('/confirmPayment', (req: express.Request, res: express.Response) => {
     let options = req.body;
     if (options.by && options.by === 'name') {
-        options = register.confirmPaymentByName(options.student, options.course);
+        options = register.confirmPaymentByName(options.student, options.course. options.confirmation);
     }
     res.send(JSON.stringify({ success: (options ? true : false)}));
 });
