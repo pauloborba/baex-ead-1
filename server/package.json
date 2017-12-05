@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine spec/service.spec.js"
+    "test": "jasmine spec/*.spec.js"
   },
   "author": "",
   "license": "ISC",
