@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "protractor typescript/config/config.js",
+    "tsc": "tsc",
+    "test": "protractor typeScript/config/config.js",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start"
   },
-  "author": "",
+  "author": "Arthur Araújo",
   "license": "ISC",
   "devDependencies": {
     "@types/cucumber": "^2.0.4",

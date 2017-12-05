@@ -11,5 +11,5 @@
     "outDir": "typeScript",
     "suppressImplicitAnyIndexErrors": true
   },
-  "compileOnSave": true,
+  "compileOnSave": true
 }
