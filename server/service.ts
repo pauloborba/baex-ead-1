@@ -8,7 +8,7 @@ import { Module } from '../model/module';
 
 const app = express();
 
-const register: Register = new Register();
+let register: Register = new Register();
 
 const allowCrossDomain = function (req: any, res: any, next: any) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -81,4 +81,8 @@ function closeServer(): void {
     server.close();
 }
 
-export { app, server, closeServer }
+function resetServer() {
+    register = new Register();
+}
+
+export { app, server, closeServer, resetServer }

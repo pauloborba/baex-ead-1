@@ -1,6 +1,7 @@
 <h2>{{course.name}}</h2>
 <p>{{course.description}}</p>
 <h3>Modules:</h3>
+<p id="error">{{message}}</p>
 <ol *ngFor="let module of course.modules">
   <li>
     <button (click)="redirectTo(module)">{{module.name}}</button>

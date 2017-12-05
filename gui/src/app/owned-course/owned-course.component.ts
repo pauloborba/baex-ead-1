@@ -13,6 +13,7 @@ import { Module } from "../../../../model/module";
 export class OwnedCourseComponent implements OnInit {
   
   course: Course;
+  message: string;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) { }
 
@@ -23,7 +24,13 @@ export class OwnedCourseComponent implements OnInit {
   }
 
   redirectTo(modulee: Module) {
-    this.router.navigate(['myModule', JSON.stringify(this.course), JSON.stringify(modulee)]);
+    let released = new Date(modulee.releaseDate);
+    let today = new Date();
+    if (today.getTime() >= released.getTime()) {
+      this.router.navigate(['myModule', JSON.stringify(this.course), JSON.stringify(modulee)]);
+    } else {
+      this.message = 'not avaliable yet';
+    }
   }
 
 }
