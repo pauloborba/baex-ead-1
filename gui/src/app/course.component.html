@@ -1,0 +1,57 @@
+<div class="container">
+   <div class="row">
+      <div class="col-xs-12 col-md-4">
+         <h3>Cadastro de Curso</h3>
+         <form>
+            <div class="form-group">
+               <label for="">Nome</label>
+               <input [(ngModel)]="course.name" type="text" name="namebox" id="namebox" class="form-control">
+            </div>
+            <div class="form-group">
+               <label for="">Preço</label>
+               <input [(ngModel)]="course.price" type="text" name="pricebox" id="pricebox" class="form-control">
+            </div>
+            <div class="form-group">
+               <label for="">Descrição</label>
+               <input [(ngModel)]="course.description" type="text" name="descriptionbox" id="descriptionbox" class="form-control">
+            </div>
+            <div class="form-group">
+               <label for="">Módulos</label>
+               <ul *ngFor="let m of course.modules" name="modulelist"><li>{{m.name}}</li></ul>
+            </div>
+            <div class="form-group">
+               <label for="">Nome do Módulo</label>
+               <input [(ngModel)]="module.name" type="text" name="modulenamebox" id="modulenamebox" class="form-control">
+               <button (click)="registerModule(module)" type="button" class="btn btn-default">Adicionar Módulo</button></div>
+            <button (click)="createCourse(course)" [disabled]="updatingList" type="button" class="btn btn-primary btn-block">Adicionar Curso</button>
+            
+
+         </form>
+         
+      </div>
+      <div class="col-xs-12 col-md-8">
+         <h3>Cursos Cadastrados</h3>
+         <table class="table table-hover" *ngIf="courses.length > 0">
+            <thead>
+               <tr>
+                  <th>Nome</th>
+                  <th>Preço</th>
+                  <th>Descrição</th>
+                  <th>Módulos</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor="let c of courses" name="courselist">
+                  <td name="namelist">{{c.name}}</td>
+                  <td name="pricelist">{{c.price}}</td>
+                  <td name="descriptionlist">{{c.description}}</td>
+                  <td><ol><li *ngFor="let m of c.modules" name="modulelist">{{m.name}}</li></ol></td>
+               </tr>
+            </tbody>
+         </table>
+         
+      </div>
+      
+   </div>
+   
+</div>
