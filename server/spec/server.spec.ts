@@ -23,4 +23,18 @@ describe("Server", () => {
     )
   });
 
+
+  it("cannot register courses with equal names", () => {
+    return request.post(base_url + "course", {"json":{"nome": "Mari", "cpf" : "965"}}).then(body => {
+         expect(body).toEqual({status: "success"});
+         return request.post(base_url + "course", {"json":{"nome": "Pedro", "cpf" : "965"}}).then(body => {
+             expect(body).toEqual({status: "failure"});
+             return request.get(base_url + "course").then(body => {
+                 expect(body).toContain('{"name":"Course 1","price":"100","description":"Original course","modules":{}}');
+                 expect(body).not.toContain('{"name":"Course 1","price":"9999","description":"Copycat course","modules":{}}');
+             });
+         });
+     });
+  })
+
 })
