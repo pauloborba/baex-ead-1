@@ -125,6 +125,9 @@ defineSupportCode(({Given, When, Then, After, Before}) => {
         await confirmPayment(name, courseName);
     });
 
+    Given(/^"(.*)" is not in day with his payment of the "(.*)" course$/, async (name: string, courseName: string) => {
+    });
+
     Given(/^the module "(.*)" of the "(.*)" course was set to be available "(\d*)" days ago$/, async (moduleName: string, courseName: string, daysAgo: string) => {
         const releaseDate = new Date(new Date().setDate(new Date().getDate() - Number(daysAgo))); //today - daysAgo
         await createModule(moduleName, 'testModule', releaseDate, courseName);
@@ -154,6 +157,10 @@ defineSupportCode(({Given, When, Then, After, Before}) => {
 
     Then(/^"(.*)" can see an error message$/, async (name) => {
         await expect($('#error').getText()).to.eventually.equal('not avaliable yet');
+    });
+    
+    Then(/^"(.*)" can see an warning$/, async (name) => {
+        await expect($('#error').getText()).to.eventually.equal('not in day with your payments');
     });
 
     
