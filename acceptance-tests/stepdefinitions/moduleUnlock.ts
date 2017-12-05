@@ -97,12 +97,18 @@ async function createModule(name: string, description: string, releaseDate: Date
     .then(response => expect(JSON.parse(response).success).to.equal(true));
 }
 
-defineSupportCode(({Given, When, Then}) => {
+let server = require('../../server/service');
+
+defineSupportCode(({Given, When, Then, After, Before}) => {
+    
+    Before(() => {
+        server.resetServer();
+    });
     
     Given(/^a student named "(.*)" with cpf "(\d\d\d.\d\d\d.\d\d\d-\d\d)"$/, async (name: string, cpf: string) => {
         await createStudent(name, cpf, `${name}@test.com`, 'testPassword');
     });
-
+    
     Given(/^a class named "(.*)" from a course named "(.*)"$/, async (className: string, courseName: string) => {
         await createCourse(courseName, 0.00, 'testCourse');
         const begin = new Date();
@@ -124,6 +130,11 @@ defineSupportCode(({Given, When, Then}) => {
         await createModule(moduleName, 'testModule', releaseDate, courseName);
     });
 
+    Given(/^the module "(.*)" of the "(.*)" course is set to be available "(\d*)" days from now$/, async (moduleName: string, courseName: string, daysFromNow: string) => {
+        const releaseDate = new Date(new Date().setDate(new Date().getDate() + Number(daysFromNow))); //today - daysAgo
+        await createModule(moduleName, 'testModule', releaseDate, courseName);
+    });
+
     When(/^"(.*)" with cpf "(\d\d\d.\d\d\d.\d\d\d-\d\d)" tries to see the module "(.*)" of the "(.*)" course$/, async (name: string, cpf: string, moduleName: string, courseName: string) => {
         await browser.get(`${frontUrl}`);
         await $('#name').sendKeys(name);
@@ -136,8 +147,14 @@ defineSupportCode(({Given, When, Then}) => {
         await element(by.buttonText(moduleName)).click();
     });
 
-    Then(/^"(.*)" redirected to the "(.*)" module page from the "(.*)" course$/, async (name, moduleName, courseName) => {
+    Then(/^"(.*)" is redirected to the "(.*)" module page from the "(.*)" course$/, async (name, moduleName, courseName) => {
         await expect($('#courseName').getText()).to.eventually.equal(courseName);
         await expect($('#moduleName').getText()).to.eventually.equal(moduleName);
     });
+
+    Then(/^"(.*)" can see an error message$/, async (name) => {
+        await expect($('#error').getText()).to.eventually.equal('not avaliable yet');
+    });
+
+    
 });
