@@ -7,9 +7,8 @@
         "declaration": false,
         "removeComments": false,
         "noImplicitAny": false,
-        "outDir": "typeScript",
-        "typeRoots": [ "./node_modules/@types" ],
-        "types": ["node","cucumber"]
+        "outDir": "typescript"
+        
     },
     "exclude": [
         "node_modules",

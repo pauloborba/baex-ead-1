@@ -14,7 +14,7 @@ export let config: Config = {
     frameworkPath: require.resolve('protractor-cucumber-framework'),
 
     specs: [
-        '../../features/*.feature'
+        '../../../features/*.feature'
     ],
 
     onPrepare: () => {
@@ -26,7 +26,7 @@ export let config: Config = {
     cucumberOpts: {
         compiler: "ts:ts-node/register",
         strict: true,
-        format: ['pretty'],
-        require: ['../../stepdefinitions/*.ts'],
+        format: ['progress'],
+        require: ['../../../stepdefinitions/*.ts'],
     }
 };
